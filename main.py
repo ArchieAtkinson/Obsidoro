@@ -36,16 +36,16 @@ class status(Enum):
 def main(argv):
 
     global vault_path
-    if len(argv) != 1:
+
+    try:
+        if len(argv) != 1 or os.path.exists(argv[1]):
+            vault_path = argv[1]
+        else:
+            print("py main.py <vault path>")
+            exit()
+    except:
         print("py main.py <vault path>")
         exit()
-
-    if os.path.exists(argv[1]):
-        vault_path = argv[1]
-    else:
-        print("py main.py <vault path>")
-        exit()
-
 
     work = activity(25, status.work_state)
 
@@ -76,16 +76,17 @@ def main(argv):
 
         if Pomo.state != status.work_state:
             ConfigNewInterval(work, Pomo)
+            DisplayTimer(Pomo, 'x')
 
         elif Pomo.interval < interval_max and Pomo.state == status.work_state:
             ConfigNewInterval(short_break, Pomo)
+            DisplayTimer(Pomo, 'x')
 
         elif Pomo.interval == interval_max and Pomo.state == status.work_state:
 
             ConfigNewInterval(long_break, Pomo)
+            DisplayTimer(Pomo, 'x')
             Pomo.interval = 0
-
-        DisplayTimer(Pomo, ' ')
 
         while True:
             lines = ReadFileLines()
