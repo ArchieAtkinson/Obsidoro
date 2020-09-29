@@ -19,3 +19,5 @@ It will then run until you pause it with the same box or you kill the python pro
 -----
 
 Feel free to suggest improvements or fork it.
+
+Sorry in advanced for the poor python, I'm more a C person 
