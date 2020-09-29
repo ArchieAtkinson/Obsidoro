@@ -1,4 +1,3 @@
-import getopt
 import os
 import sys
 import time
@@ -37,12 +36,16 @@ class status(Enum):
 def main(argv):
 
     global vault_path
-    print(os.path.exists(argv[1]))
+    if len(argv) != 1:
+        print("py main.py <vault path>")
+        exit()
+
     if os.path.exists(argv[1]):
         vault_path = argv[1]
     else:
         print("py main.py <vault path>")
         exit()
+
 
     work = activity(25, status.work_state)
 
@@ -82,7 +85,7 @@ def main(argv):
             ConfigNewInterval(long_break, Pomo)
             Pomo.interval = 0
 
-        DisplayTimer(Pomo)
+        DisplayTimer(Pomo, ' ')
 
         while True:
             lines = ReadFileLines()
