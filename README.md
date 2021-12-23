@@ -1,5 +1,7 @@
 # Obsidoro
 
+**Deprecated - This was created before the plugin API. There are now many better Pomodoro timers available in the community plugin browser**
+
 Obsidoro is a [Pomodoro Timer](https://en.wikipedia.org/wiki/Pomodoro_Technique) for Obsidian. 
 
 --------
